@@ -7,7 +7,9 @@ const reducer = (state, action) => {
         return {...state, cart:new Map()}
     }
     if (action.type === REMOVE) {
-        let updatedArrays = 
+        const newCart = new Map(state.cart)
+        newCart.delete(action.payload.id)
+       return {...state, cart:newCart}
     }
 
     
