@@ -1,6 +1,11 @@
 import { useContext,useReducer,useEffect, createContext } from "react";
 import reducer from "./reducer";
 
+
+import { CLEAR_CART, REMOVE, INCREASE, DECREASE, LOADING, DISPLAY } from "./actions";
+
+
+
 //useContext has been imported from react
 //We initialized the context(AppContext) with an empty object
 // ● AppContext is a React Context API object. ● 
@@ -12,13 +17,13 @@ const AppContext = createContext();
 //we're not locked into working out of the one array
 const initialState = {
     loading: false,
-    card: [],
+    cart: [],
 };
 
-
-
-
-
+// ● Converting cart to an array ● 
+const cartItems = cart.map((item) => [item.id, item]);  
+const cart = new Map(cartItems)
+const cartArray = Array.from(cart.entries())    
 
 // ● Functional Component (AppProvider) that returns JSX  ● 
 export const AppProvider = ({ children }) => {
