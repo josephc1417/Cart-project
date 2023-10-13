@@ -1,4 +1,5 @@
 import { useContext,useReducer,useEffect, createContext } from "react";
+import cartItems from "./data";
 import reducer from "./reducer";
 
 
@@ -17,13 +18,10 @@ const AppContext = createContext();
 //we're not locked into working out of the one array
 const initialState = {
     loading: false,
-    cart: [],
+    cart: new Map(cartItems.map((item) => [item.id, item])),
 };
 
-// ● Converting cart to an array ● 
-const cartItems = cart.map((item) => [item.id, item]);  
-const cart = new Map(cartItems)
-const cartArray = Array.from(cart.entries())    
+
 
 // ● Functional Component (AppProvider) that returns JSX  ● 
 export const AppProvider = ({ children }) => {
@@ -32,7 +30,7 @@ export const AppProvider = ({ children }) => {
      // ● useReducer Hook returns an array containing the initial state and a dispatch function ● 
     const [state,dispatch] = useReducer(reducer,initialState)
     return(
-    <AppContext.Provider value={{...state}} >
+    <AppContext.Provider value={{...state,}} >
     {children}
     </AppContext.Provider>
     ) 
