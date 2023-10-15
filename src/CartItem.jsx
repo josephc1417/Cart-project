@@ -17,7 +17,7 @@ const CartItem = ({ id, img, title, price, amount }) => {
       </div>
       <div>
         {/* increase amount */}
-        <button className='amount-btn' onClick={() => console.log('increase')}>
+        <button className='amount-btn' onClick={() => increase(id)}>
           <FaChevronUp className='amount-icon' />
         </button>
         {/* amount */}

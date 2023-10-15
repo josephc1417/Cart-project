@@ -11,6 +11,11 @@ const reducer = (state, action) => {
         newCart.delete(action.payload.id)
        return {...state, cart:newCart}
     }
+    if (action.type ===     INCREASE) {
+        const newCart = new Map(state.cart)
+        const itemId = (action.payload.id)
+       return {...state, cart:newCart}
+    }
 
     
     
