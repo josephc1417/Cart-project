@@ -1,5 +1,6 @@
-import { FaCartPlus } from 'react-icons/fa';
-import { useGlobalContext } from './context';
+import {FaCartPlus} from 'react-icons/fa';
+import {useGlobalContext} from './context';
+
 const Navbar = () => {
   const {total,amount} = useGlobalContext();
   return (
