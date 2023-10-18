@@ -1,4 +1,5 @@
-import {CLEAR_CART, DECREASE, INCREASE, REMOVE} from "./actions";
+import {CLEAR_CART, DECREASE, INCREASE, REMOVE,LOADING,DISPLAY} from "./actions";
+
 
 
 const reducer = (state, action) => {
@@ -34,10 +35,17 @@ const reducer = (state, action) => {
             newCart.set(itemId,newItem)
         return {...state, cart:newCart}
     }
+if(action.type ===LOADING) {
+    return {...state, loading:true}
+}
+if(action.type === DISPLAY) {
+    const newCart = new Map(action.payload.cart.map((item) => [item.id, item]))
+    return {...state, cart: newCart, loading: false}
+    }
 
 {/* seems like we are using class methods like get and set to retrieve and set values */}
-    
-    
+
+
     
     throw new Error (`no matching action type : ${action.type}`)
     
